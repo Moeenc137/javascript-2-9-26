@@ -33,3 +33,143 @@ rUsecase = function (n) {
 };
 
 rUsecase(12);
+
+//coding challange 4
+document.body.append(document.createElement("textarea"));
+document.body.append(document.createElement("button"));
+
+document.querySelector("button").addEventListener("click", function () {
+  let text = document.querySelector("textarea").value;
+  console.log(text);
+  let rows = text.split("/n");
+  for (const row of rows) {
+    let [first, second] = row.trim().toLowerCase().split("_");
+    const output = `${first}${second.replace(second[0], second[0].toUpperCase)}`;
+  }
+  console.log(output);
+});
+
+// converter = function (textArea) {
+//   seperate = textArea.split("_");
+//   for (let n of seperate) {
+//     let str = n[0].toUpperCase() + n.slice(1);
+//     console.log(str);
+//   }
+//   replace = textArea.includes(" ") ? textArea.replaceAll(" ", "") : textArea;
+//   console.log(replace);
+// };
+// converter("under_case text_area camel_case");
+
+//working with arrays
+//starter files:
+
+("use strict");
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+// BANKIST APP
+
+// Data
+const account1 = {
+  owner: "Jonas Schmedtmann",
+  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  interestRate: 1.2, // %
+  pin: 1111,
+};
+
+const account2 = {
+  owner: "Jessica Davis",
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  interestRate: 1.5,
+  pin: 2222,
+};
+
+const account3 = {
+  owner: "Steven Thomas Williams",
+  movements: [200, -200, 340, -300, -20, 50, 400, -460],
+  interestRate: 0.7,
+  pin: 3333,
+};
+
+const account4 = {
+  owner: "Sarah Smith",
+  movements: [430, 1000, 700, 50, 90],
+  interestRate: 1,
+  pin: 4444,
+};
+
+const accounts = [account1, account2, account3, account4];
+
+// Elements
+const labelWelcome = document.querySelector(".welcome");
+const labelDate = document.querySelector(".date");
+const labelBalance = document.querySelector(".balance__value");
+const labelSumIn = document.querySelector(".summary__value--in");
+const labelSumOut = document.querySelector(".summary__value--out");
+const labelSumInterest = document.querySelector(".summary__value--interest");
+const labelTimer = document.querySelector(".timer");
+
+const containerApp = document.querySelector(".app");
+const containerMovements = document.querySelector(".movements");
+
+const btnLogin = document.querySelector(".login__btn");
+const btnTransfer = document.querySelector(".form__btn--transfer");
+const btnLoan = document.querySelector(".form__btn--loan");
+const btnClose = document.querySelector(".form__btn--close");
+const btnSort = document.querySelector(".btn--sort");
+
+const inputLoginUsername = document.querySelector(".login__input--user");
+const inputLoginPin = document.querySelector(".login__input--pin");
+const inputTransferTo = document.querySelector(".form__input--to");
+const inputTransferAmount = document.querySelector(".form__input--amount");
+const inputLoanAmount = document.querySelector(".form__input--loan-amount");
+const inputCloseUsername = document.querySelector(".form__input--user");
+const inputClosePin = document.querySelector(".form__input--pin");
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+// LECTURES
+
+const currencies = new Map([
+  ["USD", "United States dollar"],
+  ["EUR", "Euro"],
+  ["GBP", "Pound sterling"],
+]);
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+/////////////////////////////////////////////////
+
+//array slice method:
+//works exactly as string slice method
+let arr = ["a", "b", "c", "d", "e", "f"];
+console.log(arr.slice(1));
+console.log(arr.slice(1, 5)); //can also define end point and starting point.
+console.log(arr.slice(-2)); //slice in negitive to get values in reverse
+console.log(arr.slice(1, -3));
+console.log(arr.slice()); //to get shallow copy
+
+//splice method
+//it is like slice method but insted of making a new array , it mutates the org one.
+console.log(arr.splice(1));
+console.log(arr.splice(-5));
+
+//reverse method:
+//it reverses the array and mutates the org one.
+let arr2 = ["a", "b", "c", "d"];
+arr2.reverse();
+console.log(arr2);
+arr2.splice(1, 3);
+console.log(arr2);
+
+//concat
+//creates new array
+//merges arrays
+let arr3 = [1, 3, 23, 2];
+let arr4 = [1, 3, 23, 2];
+let letters = arr3.concat(arr4);
+console.log(letters);
+
+//join
+//it joins array and returs a string
+console.log(arr3.join("-"));
