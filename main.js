@@ -136,8 +136,6 @@ const currencies = new Map([
   ["GBP", "Pound sterling"],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
 /////////////////////////////////////////////////
 
 //array slice method:
@@ -173,3 +171,51 @@ console.log(letters);
 //join
 //it joins array and returs a string
 console.log(arr3.join("-"));
+
+//LOOPING OVER ARRAYS USING forEach:
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+movements.forEach(function (movement) {
+  if (movement > 0) {
+    console.log(`You diposited ${movement}`);
+  } else {
+    console.log(`You withdrew${Math.abs(movement)}`);
+  }
+});
+//used forEach method to loopover an array , the main difference between for of and forEach is that
+//forEach basically use callback function each time it itreates.
+
+//to get the index of item in forEach loop you can just pass that as argument in this order first one
+//is item second is index third is the entire array which is being looped (item,index,object/array).
+//insted of for of loop where you use an other method like .enteries() to get index and items seprately.
+
+//Like:
+//0: function(200)
+//1: function(450)
+//2: function(-400)
+
+//another looping method basically used to multiply all the array elements to a value, and it works
+//on same callback priciple which forEach runs on.
+//difference is that it doesnt mutate the orignal array , it creates a new one
+let usd = movements.map(function (mov) {
+  return mov * 2;
+});
+console.log(usd);
+console.log(movements);
+//using arrow function:
+let usd2 = movements.map((mov) => {
+  return mov * 2;
+});
+console.log(usd2);
+console.log(usd);
+console.log(movements);
+//same as the foreach .map parameters are in the same order (itm,i,arr)
+
+//filter method returns a new array, filters values inside array on the basis of a condition we give to it.
+//and rest works the same as foreach and map, same order(el,idx,arr),
+const withdrawls = movements.filter(function (index) {
+  return index < 0;
+});
+console.log(withdrawls);
+//arrows works as return , it is a smaller version as the upper version basiclly works as callbacks funciton.
+const withdrawls2 = movements.filter((mov) => mov < 0);
+console.log(withdrawls2);
