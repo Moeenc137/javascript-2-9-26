@@ -247,5 +247,17 @@ const max = movements.reduce(function (acc, curr) {
     return curr;
   }
 }, movements[0]);
-
 console.log(max);
+
+//The magic of chaining methods
+
+//data pipeline
+//we can always add methods to the methods which creates new arrays , unlike reduce.
+const euToUsd = 1.1;
+const totalDepositsUSD = movements
+  .filter((mov) => mov > 0)
+  .map((mov) => mov * euToUsd)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(totalDepositsUSD);
+
+//in js it is not a good practice to use methods which mutautes the orignal array like splice or reverse.
