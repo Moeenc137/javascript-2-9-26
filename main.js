@@ -210,6 +210,7 @@ console.log(usd);
 console.log(movements);
 //same as the foreach .map parameters are in the same order (itm,i,arr)
 
+//filter method
 //filter method returns a new array, filters values inside array on the basis of a condition we give to it.
 //and rest works the same as foreach and map, same order(el,idx,arr),
 const withdrawls = movements.filter(function (index) {
@@ -219,3 +220,32 @@ console.log(withdrawls);
 //arrows works as return , it is a smaller version as the upper version basiclly works as callbacks funciton.
 const withdrawls2 = movements.filter((mov) => mov < 0);
 console.log(withdrawls2);
+
+//reduce method
+//reduce method basically works a little different then other methods , the main difference is that
+//there is another callback parameter "accumalator" and works in an order (acc,currValue,index,array).
+//it basically reduce all the current values and returns only one value on the basis of whichever
+//operator you give to it.
+//accumulator : current summed value , index: current element position , current :current value
+
+const sum = movements.reduce(function (acc, curr, idx, arr) {
+  console.log(`itration index: ${idx} accumalator: ${acc} current :${curr}`);
+  return acc + curr;
+}, 0);
+console.log(sum);
+
+//same thing done with for loop where we had to use sum2 as accumalator.
+let sum2 = 0;
+for (let mov of movements) sum2 += mov;
+console.log(sum2);
+
+//finding maximum:
+const max = movements.reduce(function (acc, curr) {
+  if (acc > curr) {
+    return acc;
+  } else {
+    return curr;
+  }
+}, movements[0]);
+
+console.log(max);
